@@ -1,0 +1,43 @@
+{% extends 'layouts/base.html' %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+<!-- CONTENT -->
+{% block content %}
+<div class="container">
+    <div class="container pt-5">
+
+        <div class="card text-white bg-dark mb-3 p-2 h-100">
+            <div class="card-header text-center">
+                <h1>DÜZENLE</h1>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="edit">Yapılacak</label>
+                        <input type="text" class="form-control" id="title_input" aria-describedby="tooltip" value={{edit_title}} placeholder={{edit_title}}>
+                        <small id="tooltip" class="form-text text-white">Buraya yapılacak listenizdeki '{{edit_title}}' stringinin yerine yazmak istediğiniz stringi girin.</small>
+                    </div>
+                    <div class="text-center ">
+                        <a type="button" id="add_button" class="btn btn-success" onclick=edit_save()>Kaydet</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+<script>
+    function edit_save() {
+        const title_input = document.getElementById("title_input").value;
+        const todo_id='{{edit_id}}';
+        const url_maskeli = "{% url 'editsave' todo_id=9898980 new_title=9898981  %}".replace('9898980', todo_id).replace('9898981', title_input);
+        return window.location.replace(url_maskeli);
+    }
+</script>
+{% endblock javascripts %}

@@ -1,0 +1,42 @@
+{% extends 'layouts/base.html' %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<link rel="stylesheet" href="../../static/css/login.css">
+{% endblock stylesheets %}
+
+<!-- CONTENT -->
+{% block content %}
+<div>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+      
+          <div class="fadeIn first">
+            <img src="../../static/icons/todo-icon.png" id="icon" alt="User Icon" />
+            <h3>Giriş Yap</h3>
+            {% if hata %}
+            <span>{{hata}}</span>
+            {% endif %}
+          </div>
+      
+          <form action="" method="POST">
+            {% csrf_token %}
+            <input type="text" id="input_username" class="fadeIn second" name="username" placeholder="Kullanıcı Adı" required>
+            <input type="text" id="input_password" class="fadeIn third" name="password" placeholder="Şifre" required>
+            <input type="submit" class="fadeIn fourth" value="Giriş Yap">
+          </form>
+      
+          <div id="formFooter">
+            <a class="underlineHover" href="signup">Kayıt Ol</a>
+          </div>
+      
+        </div>
+      </div>
+</div>
+{% endblock content %}
+
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+
+{% endblock javascripts %}

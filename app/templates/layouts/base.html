@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="S.Bugra KARATAS">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="../../static/icons/todo-icon.png">
+
+    <title>
+        N2 TODO APP
+    </title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/todo.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Specific CSS goes HERE -->
+    {% block stylesheets %} {% endblock stylesheets %}
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    {% include 'layouts/navbar.html' %}
+
+    <!-- CONTENT -->
+    {% block content %} {% endblock %}
+
+    <!-- FOOTER -->
+    {% include 'layouts/footer.html' %}
+
+
+    <!-- Specific JS goes HERE -->
+    {% block javascripts %} {% endblock javascripts %}
+</body>
+
+</html>

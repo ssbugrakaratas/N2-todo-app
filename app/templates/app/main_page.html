@@ -1,0 +1,142 @@
+{% extends 'layouts/base.html' %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+<!-- CONTENT -->
+{% block content %}
+<div class="container">
+    <div class="container pt-5">
+
+        <div class="card text-white bg-info mb-3 p-2 h-100">
+            <div class="card-header text-center bg-transparent border-transparent">
+                <h1>TODO's</h1>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="Yapılacaklar">Yapılacaklar</label>
+                        {% if edit_title %}
+                        <input type="text" class="form-control" id="todo_input" aria-describedby="tooltip" value={{edit_title}} placeholder="Yeni bir yapılacak giriniz.">
+                        {% else %}
+                        <input type="text" class="form-control" id="todo_input" aria-describedby="tooltip" placeholder="Yeni bir yapılacak giriniz.">
+                        {% endif %}
+                        <small id="tooltip" class="form-text text-white">Buraya yapılacak listenize eklemek istediğinizi yazınız.</small>
+                    </div>
+                    <div class="text-center ">
+                        <a type="button" id="add_button" class="btn btn-success" onclick=add()>Ekle</a>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer bg-transparent border-transparent ">
+                <p class="card-text ">Bu alanda yaptığınız yapılacaklar eklemeleriniz aşağıda yer alan tabloda görüntülecektir.</p>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="container pt-5 pb-5 ">
+        <table data-toggle="table" data-locale="tr-TR" class="table table-hover ">
+            <thead>
+                <h1 class="text-center">Yapılacaklar Listeniz</h1>
+                <th style="width: 2%"></th>
+                <th style="width: 10%" >Durum</th>
+                <th style="width: 53%">Tanım</th>
+                <th style="width: 25%">Tamamlanma Tarihi</th>
+                <th style="width: 10%"></th>
+            </thead>
+            <tbody>
+                {% for i in todos %}
+                <tr id="tr_item{{forloop.counter}}">
+                    <th scope="row ">{{forloop.counter}}</th>
+                    <td>
+                        <label class="custom-control overflow-checkbox">
+                            <input id="check_box" type="checkbox" class="overflow-control-input" value={{i.checked}} onclick=check_changer({{forloop.counter}}) >
+                            <span value={{i.id}} id="id_temper{{forloop.counter}}" class="overflow-control-indicator"></span>
+                            <span class="overflow-control-description">{{i.checked}}</span>
+                          </label>
+                    </td>
+                    <td>{{i.title}}</td>
+                    <td>{{i.checked_date}}</td>
+                    <td>
+                        <a id="edit_btn" type="button" class="btn btn-sm btn-info" href="{% url 'edit' todo_id=i.id %}"><i class="bi bi-pencil"></i></a>
+                        <a id="delete_btn" type="button" class="btn btn-sm btn-danger" href="{% url 'delete' todo_id=i.id %}"><i class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}
+
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+
+<script>
+    $(init);
+
+    function init() {
+        if($(check_box).length == 1){
+            if ($(check_box).val() == 'True') {
+                $(check_box).prop('checked', true)
+                $(check_box).prop('disabled', true)
+            } else {
+                $(check_box).prop('checked', false)
+                $(check_box).prop('disabled', false)
+            }
+        }
+        else{
+            for (var i = 0; i < $(check_box).length; i++) {
+            if ($(check_box[i]).val() == 'True') {
+                $(check_box[i]).prop('checked', true)
+                $(check_box[i]).prop('disabled', true)
+            } else {
+                $(check_box[i]).prop('checked', false)
+                $(check_box[i]).prop('disabled', false)
+            }
+        }
+        }
+        
+
+    }
+</script>
+
+
+<script>
+    function check_changer(i) {
+        if(i==1){
+            if ($(check_box).val() == 'False') {
+                $(check_box).prop('checked', true)
+                $(check_box).prop('disabled', true)
+                const todo_id=document.getElementById("id_temper"+(i)).attributes[0].value
+                const url_maskeli = "{% url 'checkTrue' todo_id=9898987  %}".replace('9898987', todo_id);
+                return window.location.replace(url_maskeli);
+            }
+        }
+        else{
+            if ($(check_box[i-1]).val() == 'False') {
+            $(check_box[i-1]).prop('checked', true)
+            $(check_box[i-1]).prop('disabled', true)
+            const todo_id=document.getElementById("id_temper"+(i)).attributes[0].value
+            const url_maskeli = "{% url 'checkTrue' todo_id=9898987  %}".replace('9898987', todo_id);
+            return window.location.replace(url_maskeli);
+        }
+        }
+
+        
+    }
+</script>
+
+
+<script>
+    function add() {
+        const add_title = document.getElementById("todo_input").value;
+        const url_maskeli = "{% url 'add' title=0  %}".replace('0', add_title.toString());
+        return window.location.replace(url_maskeli);
+    }
+</script>
+
+{% endblock javascripts %}

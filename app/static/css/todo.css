@@ -1,0 +1,120 @@
+body {
+    font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    background-color: #fff;
+}
+
+p {
+    color: #b3b3b3;
+    font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+a {
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease;
+}
+
+a,
+a:hover {
+    text-decoration: none !important;
+}
+
+.content {
+    padding: 7rem 0;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+.custom-control.overflow-checkbox .overflow-control-input {
+    display: none;
+}
+
+.custom-control.overflow-checkbox .overflow-control-input:checked~.overflow-control-indicator::after {
+    -webkit-transform: rotateZ(45deg) scale(1);
+    -ms-transform: rotate(45deg) scale(1);
+    transform: rotateZ(45deg) scale(1);
+    top: -6px;
+    left: 5px;
+}
+
+.custom-control.overflow-checkbox .overflow-control-input:checked~.overflow-control-indicator::before {
+    opacity: 1;
+}
+
+.custom-control.overflow-checkbox .overflow-control-input:disabled~.overflow-control-indicator {
+    opacity: .5;
+    border: 2px solid #ccc;
+}
+
+.custom-control.overflow-checkbox .overflow-control-input:disabled~.overflow-control-indicator:after {
+    border-bottom: 4px solid #ccc;
+    border-right: 4px solid #ccc;
+}
+
+.custom-control.overflow-checkbox .overflow-control-indicator {
+    border-radius: 3px;
+    display: inline-block;
+    position: absolute;
+    top: 4px;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #00909e;
+}
+
+.custom-control.overflow-checkbox .overflow-control-indicator::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+    -webkit-transform: rotateZ(90deg) scale(0);
+    -ms-transform: rotate(90deg) scale(0);
+    transform: rotateZ(90deg) scale(0);
+    width: 10px;
+    border-bottom: 4px solid #00909e;
+    border-right: 4px solid #00909e;
+    border-radius: 3px;
+    top: -2px;
+    left: 2px;
+}
+
+.custom-control.overflow-checkbox .overflow-control-indicator::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+    width: 10px;
+    border-right: 7px solid #fff;
+    border-radius: 3px;
+    -webkit-transform: rotateZ(45deg) scale(1);
+    -ms-transform: rotate(45deg) scale(1);
+    transform: rotateZ(45deg) scale(1);
+    top: -4px;
+    left: 5px;
+    opacity: 0;
+}
